@@ -9,7 +9,7 @@ import {
     TouchableOpacity,
     Dimensions
 } from 'react-native';
-import {StackNavigator} from 'react-navigation';
+import {Tab} from '../config/router';
 import LoginScreen from './LoginScreen';
 import Home from './Home';
 
@@ -20,25 +20,9 @@ class App extends React.Component {
 
     render() {
         return(
-            <View>
-                <Text>yolo</Text>
-            </View>
+            <Tab/>
         );
     }
 }
 
-const styles = StyleSheet.create({
-    parent: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: null,
-        height: null,
-    }
-});
-
-const SackPlayer = StackNavigator({
-    Login: {screen: LoginScreen,},
-    Home: {screen: Home,},
-});
-AppRegistry.registerComponent('SackPlayer', () => SackPlayer);
+AppRegistry.registerComponent('SackPlayer', () => App);

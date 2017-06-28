@@ -20,10 +20,7 @@ export default class LoginScreen extends React.Component {
     }
     static navigationOptions = {
         title: 'Login',
-    };
-    
-    onLogin() {
-        this.props.navigation.navigate('Home');
+        
     };
 
     _fbAuth() {
@@ -36,8 +33,9 @@ export default class LoginScreen extends React.Component {
                         const credential = firebase.auth.FacebookAuthProvider.credential(accessTokenData.accessToken)
                         firebase.auth().signInWithCredential(credential).then((result) => {
                             //promise was successful
-                            ()=>onLogin;
-                            console.log('login');
+                            this.props.navigation.back();
+                            
+                            console.log('login')
                         }, (error) => {
                             //promise was rejected
                             console.log(error);
