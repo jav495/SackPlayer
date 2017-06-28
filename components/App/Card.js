@@ -7,6 +7,7 @@ import {
     Button,
     Image,
     Dimensions,
+    TouchableOpacity,
 } from 'react-native';
 
 var screen = Dimensions.get('window');
@@ -17,19 +18,40 @@ export default class Card extends React.Component {
             title: '',
             artist: '',
             art: '',
+            score: 0,
         }
     }
     componentWillMount() {
-        this.setState({title: this.props.title, artist: this.props.artist})
+        this.setState({title: this.props.title, artist: this.props.artist, art: this.props.art})
+    }
+    upvote(){
+        console.log("+1");
+        this.setState({score: this.state.score+1});
+    }
+    downvote(){
+        this.setState({score: this.state.score-1});
     }
     render(){
         return(
             <View style = {styles.card}>
-                <Image style = {styles.albumArt} source={require('../Images/album.jpg')}>
+                <Image style = {styles.albumArt} source={{uri:this.state.art}}>
                 </Image>
                 <View style ={styles.textContainer}>
                     <Text style={styles.title}>{this.state.title}</Text>
                     <Text style={styles.title}>{this.state.artist}</Text>
+                </View>
+                <View style={styles.score}>
+                    <TouchableOpacity 
+                        onPress={() => this.upvote()}
+                    >
+                    <Text style={styles.scoreText}>+</Text>
+                    </TouchableOpacity>
+                    <Text style={styles.scoreText}>{this.state.score}</Text>
+                    <TouchableOpacity
+                        onPress={() => this.downvote()}
+                    >
+                        <Text style={styles.scoreText}>-</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         );
@@ -44,6 +66,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginBottom: 10, 
         alignItems: 'center',
+        borderRadius: 10,
     },
     albumArt: {
         height: 50,
@@ -63,6 +86,19 @@ const styles = StyleSheet.create({
         fontFamily: 'helvetica',
         fontWeight: 'bold',
         color: 'black',
+    },
+    score: {
+        height: 75,
+        width: 100,
+        position: 'absolute',
+        left: screen.width/6*3.5,
+        flexDirection: 'row',
+        padding: 5,
+        alignItems: 'center',
+    },
+    scoreText: {
+        fontWeight: 'bold',
+        fontSize: 24,
+        padding: 5,
     }
-    
 });

@@ -3,6 +3,7 @@ import {StackNavigator, TabNavigator} from 'react-navigation';
 import Login from '../App/LoginScreen';
 import Home from '../App/Home';
 import Search from '../App/Search';
+import VoteScreen from '../App/VoteScreen';
 import { Icon } from 'react-native-elements';
 
 export const Stack = StackNavigator({
@@ -20,8 +21,13 @@ export const Tab = TabNavigator({
         screen: Home,
         
     },
+
+    Vote: {
+        screen: VoteScreen,
+    },
+
     Search: {
         screen: Search,
-        icon: ({ tintColor }) => <Icon name="list" size ={35} color={tintColor} />   
+          
     },
 })
