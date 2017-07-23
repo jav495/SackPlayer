@@ -68,12 +68,13 @@ export default class Home extends React.Component {
                 <View style={styles.Status}>
                 </View>
                 <View style={styles.Main}>
+                    <Text>SACKPLAYER</Text>
                     <View style={styles.Container}>
                         <Text style={styles.NowPlaying}>Now Playing</Text>
                         {this.renderNowPlaying()}
                     </View>
                     <View style={styles.Container}>
-                        <Text style={styles.NowPlaying}>Next</Text>
+                        <Text style={styles.NowPlaying}>Next Song</Text>
                         {this.renderNextSong()}
                     </View>
                 </View>
@@ -90,6 +91,8 @@ const styles = StyleSheet.create({
     },
     Main : {
         flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     Container : {
         width:screen.width,

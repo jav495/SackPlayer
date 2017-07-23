@@ -61,10 +61,10 @@ export default class Card extends React.Component {
 const styles = StyleSheet.create({
     card: {
         width: screen.width/6*5,
-        height: 75,
+        height: 60,
         backgroundColor: 'rgba(250,250,250,.7)',
         flexDirection: 'row',
-        marginBottom: 10, 
+        marginTop: 10,
         alignItems: 'center',
         borderRadius: 10,
     },
@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
         width: 50,
         marginTop: 5,
         marginLeft: 5,
+        marginBottom: 5,
         alignItems: 'center',
     },
     textContainer: {

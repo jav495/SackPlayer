@@ -9,7 +9,8 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
-    Dimensions
+    Dimensions,
+    ScrollView,
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import songList from './test';
@@ -49,7 +50,9 @@ export default class VoteScreen extends React.Component {
                 <View style={styles.status}>
                 </View>
                 <View style={styles.container}>
-                    {this.cardRender(this.state.Queue)}
+                    <ScrollView>
+                        {this.cardRender(this.state.Queue)}
+                    </ScrollView>
                 </View>
             </Image>
         );
@@ -71,5 +74,7 @@ const styles = StyleSheet.create({
         flex:1,
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: 'rgba(0,0,0,0.3)',
     },
+    
 });
