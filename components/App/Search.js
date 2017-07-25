@@ -9,17 +9,35 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
-    Dimensions
+    Dimensions,
+    ScrollView,
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 
 var screen = Dimensions.get('window');
 
 export default class Search extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            searchTerm: '',
+            searchArr: [],
+        };
+    }
     static navigationOptions = {
         title: 'Search',
         tabBarIcon: ({ tintColor }) => <Icon name="search" size ={35} color={tintColor} /> 
     }
+
+    searchRender(arr){
+        var array = arr;
+        var rows = []
+        for(i = 0; i < array.length; i++){
+            rows.push(<Card key={i} art={array[i][0]} title={array[i][1]} artist={array[i][2]}/>) 
+        }
+        return(<View>{rows}</View>)
+    }
+
     render(){
         return(
             <Image source = {require('../Images/background.jpg')} style={styles.Parent}>
@@ -30,9 +48,17 @@ export default class Search extends React.Component {
                     <TextInput style={styles.searchBar}
                         placeholder='Search for music'
                         placeholderTextColor='white'
+                        returnKeyType='search'
+                        onChangeText={(searchTerm) => this.setState({searchTerm})}
+                        //Youtube Search Function goes HERE***
+                        onSubmitEditing={()=>console.log(this.state.searchTerm)}
+
                     />
                 </View>
                 <View style={styles.contentContainer}>
+                    <ScrollView>
+                        {this.searchRender(this.state.searchArr)}
+                    </ScrollView>
                 </View>
             </Image>
         );
