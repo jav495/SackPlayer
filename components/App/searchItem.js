@@ -49,8 +49,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     albumArt: {
-        height: 50,
-        width: 50,
+        height: 45,
+        width: 60,
         marginTop: 5,
         marginLeft: 5,
         marginBottom: 5,
@@ -61,11 +61,12 @@ const styles = StyleSheet.create({
         marginRight: 10,
         marginTop: 10,
         marginBottom: 10,
-        flexDirection: 'column',
+        width: screen.width/6*5 - 60, 
     },
     title: {
         fontFamily: 'helvetica',
         fontWeight: 'bold',
         color: 'black',
+        fontSize: 10,
     },
 });

@@ -1,5 +1,6 @@
 import React from 'react';
-import Card from './Card';
+import Config from '../config/secret';
+import Item from './searchItem';
 import {
     AppRegistry,
     Text,
@@ -11,6 +12,7 @@ import {
     TouchableOpacity,
     Dimensions,
     ScrollView,
+    AsyncStorage,
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 
@@ -31,11 +33,32 @@ export default class Search extends React.Component {
 
     searchRender(arr){
         var array = arr;
-        var rows = []
+        var rows = [];
         for(i = 0; i < array.length; i++){
-            rows.push(<Card key={i} art={array[i][0]} title={array[i][1]} artist={array[i][2]}/>) 
+            rows.push(<Item key={i} art={array[i][0]} title={array[i][1]} url={array[i][2]}/>) 
         }
         return(<View>{rows}</View>)
+    }
+
+    async searchQuery(query){
+        let res = await fetch(`${Config.SEARCH_API_URL}${query}`);
+        res = await res.json();
+        this.searchResults(res);
+        
+    }
+  
+    searchResults(res){
+        var array = [];
+        
+        for(i = 0; i < 10; i++){
+            var item = [];
+            item.push(res["items"][i]["snippet"]["thumbnails"]["default"]["url"]);
+            item.push(res["items"][i]["snippet"]["title"]);
+            item.push(res["items"][i]["id"]["videoId"]);
+            array.push(item);  
+        }
+        this.setState({searchArr: array});
+        console.log(this.searchArr);
     }
 
     render(){
@@ -49,9 +72,10 @@ export default class Search extends React.Component {
                         placeholder='Search for music'
                         placeholderTextColor='white'
                         returnKeyType='search'
+                        autoCorrect = {false}
                         onChangeText={(searchTerm) => this.setState({searchTerm})}
                         //Youtube Search Function goes HERE***
-                        onSubmitEditing={()=>console.log(this.state.searchTerm)}
+                        onSubmitEditing={()=> this.searchQuery(this.state.searchTerm)}
 
                     />
                 </View>
@@ -94,5 +118,6 @@ const styles = StyleSheet.create({
     contentContainer: {
         flex:1,
         backgroundColor: 'rgba(0,0,0,0.3)',
+        alignItems: 'center',
     }
 });
