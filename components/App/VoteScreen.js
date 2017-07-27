@@ -35,11 +35,25 @@ export default class VoteScreen extends React.Component {
         tabBarIcon: ({ tintColor }) => <Icon name="list" size ={35} color={tintColor} /> 
     }
 
+    //TODO: Write Comparison Function
+    sortByVote(arr){
+        if (arr.score < arr.score)
+            return -1;
+        if (arr.score > arr.score)
+            return 1;
+        return 0;
+    }
+
+    //TODO: Code to pull selected songs from Server to add to Queue object in order to display in cardRender
+    refreshItems(){
+
+    }
+
     cardRender(arr){
         var array = arr;
         var rows = []
         for(i = 0; i < array.length; i++){
-            rows.push(<Card key={i} art={array[i][0]} title={array[i][1]} artist={array[i][2]}/>) 
+            rows.push(<Card key={i} art={array[i][0]} title={array[i][1]} url={array[i][2]}/>) 
         }
         return(<View>{rows}</View>)
     }

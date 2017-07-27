@@ -22,17 +22,23 @@ export default class SearchItem extends React.Component {
         }
     }
     componentWillMount() {
-        this.setState({title: this.props.title, art: this.props.art})
+        this.setState({title: this.props.title, art: this.props.art, url: this.props.url})
+    }
+
+    addToVoteScreen(){
+        //Code to push art/title/url to server backend to be displayed on VoteScreen
     }
 
     render(){
         return(
-            <View style = {styles.card}>
-                <Image style = {styles.albumArt} source={{uri:this.state.art}}>
-                </Image>
-                <View style ={styles.textContainer}>
-                    <Text style={styles.title}>{this.state.title}</Text>
-                </View>
+            <View>
+                <TouchableOpacity style = {styles.card} onPress={()=>console.log(this.state.url)}>
+                    <Image style = {styles.albumArt} source={{uri:this.state.art}}>
+                    </Image>
+                    <View style ={styles.textContainer}>
+                        <Text style={styles.title}>{this.state.title}</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -61,12 +67,12 @@ const styles = StyleSheet.create({
         marginRight: 10,
         marginTop: 10,
         marginBottom: 10,
-        width: screen.width/6*5 - 60, 
     },
     title: {
         fontFamily: 'helvetica',
         fontWeight: 'bold',
         color: 'black',
         fontSize: 10,
+        marginRight: 10,
     },
 });

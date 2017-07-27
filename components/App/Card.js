@@ -16,7 +16,7 @@ export default class Card extends React.Component {
         super(props);
         this.state = {
             title: '',
-            artist: '',
+            url: '',
             art: '',
             score: 0,
         }
@@ -24,13 +24,15 @@ export default class Card extends React.Component {
     componentWillMount() {
         this.setState({title: this.props.title, artist: this.props.artist, art: this.props.art})
     }
+
     upvote(){
-        console.log("+1");
         this.setState({score: this.state.score+1});
     }
+
     downvote(){
         this.setState({score: this.state.score-1});
     }
+    
     render(){
         return(
             <View style = {styles.card}>
@@ -38,7 +40,6 @@ export default class Card extends React.Component {
                 </Image>
                 <View style ={styles.textContainer}>
                     <Text style={styles.title}>{this.state.title}</Text>
-                    <Text style={styles.title}>{this.state.artist}</Text>
                 </View>
                 <View style={styles.score}>
                     <TouchableOpacity 

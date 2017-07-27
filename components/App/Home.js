@@ -26,6 +26,11 @@ export default class Home extends React.Component {
         tabBarIcon: ({ tintColor }) => <Icon name="home" size ={35} color={tintColor} />
     }
 
+    //TODO: Code to pull highest voted song and next song from server to display
+    refreshSongs(){
+        
+    }
+
     renderNowPlaying(){
         var array = songList;
         if(array.length > 0){

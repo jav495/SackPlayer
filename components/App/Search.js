@@ -48,6 +48,7 @@ export default class Search extends React.Component {
     }
   
     searchResults(res){
+        this.setState({searchArr: []});
         var array = [];
         
         for(i = 0; i < 10; i++){
@@ -58,7 +59,6 @@ export default class Search extends React.Component {
             array.push(item);  
         }
         this.setState({searchArr: array});
-        console.log(this.searchArr);
     }
 
     render(){
@@ -67,7 +67,7 @@ export default class Search extends React.Component {
                 <View style={styles.status}>
                 </View>
                 <View style={styles.searchContainer}>
-                    <Icon name="search" size={35} color={'white'}/>
+                    <Icon name="search" size={35} color={'white'} marginLeft={8}/>
                     <TextInput style={styles.searchBar}
                         placeholder='Search for music'
                         placeholderTextColor='white'
