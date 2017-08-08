@@ -9,9 +9,7 @@ import {
     TouchableOpacity,
     Dimensions
 } from 'react-native';
-import {Tab} from '../config/router';
-import LoginScreen from './LoginScreen';
-import Home from './Home';
+import {Stack,Tab} from '../config/router';
 
 class App extends React.Component {
     constructor(){
@@ -20,7 +18,8 @@ class App extends React.Component {
 
     render() {
         return(
-            <Tab/>
+            <Tab
+            />
         );
     }
 }

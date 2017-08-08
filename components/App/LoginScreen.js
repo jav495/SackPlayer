@@ -10,13 +10,15 @@ import {
     Dimensions
 } from 'react-native';
 import FBSDK, { LoginManager, AccessToken } from 'react-native-fbsdk';
+//import {StackNavigator, TabNavigator} from 'react-navigation';
 import firebase from 'firebase';
+import App from '../config/App';
 var fbConfig = require('./secret.js');
 const firebaseApp = firebase.initializeApp(fbConfig);
 
 export default class LoginScreen extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
     }
     static navigationOptions = {
         title: 'Login',
@@ -33,7 +35,7 @@ export default class LoginScreen extends React.Component {
                         const credential = firebase.auth.FacebookAuthProvider.credential(accessTokenData.accessToken)
                         firebase.auth().signInWithCredential(credential).then((result) => {
                             //promise was successful
-                            this.props.navigation.back();
+                            //this.props.navigation.navigate('Application');
                             
                             console.log('login')
                         }, (error) => {

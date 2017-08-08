@@ -7,7 +7,8 @@ import {
     Button,
     Image,
     TouchableOpacity,
-    Dimensions
+    Dimensions,
+    WebView,
 } from 'react-native';
 import Card from './Card';
 import { Icon } from 'react-native-elements';
@@ -28,7 +29,7 @@ export default class Home extends React.Component {
 
     //TODO: Code to pull highest voted song and next song from server to display
     refreshSongs(){
-        
+
     }
 
     renderNowPlaying(){
@@ -65,27 +66,37 @@ export default class Home extends React.Component {
         }
     }
     
-
     render(){
         return(
             
-            <Image style={styles.Parent} source = {require('../Images/Home.jpg')}>
+            <View style={styles.Parent}>
                 <View style={styles.Status}>
                 </View>
+                <View style={styles.Banner}>
+                    <Text style={styles.MenuButton}>Menu</Text>
+                </View>
                 <View style={styles.Main}>
-                    <Text>SACKPLAYER</Text>
                     <View style={styles.Container}>
                         <Text style={styles.NowPlaying}>Now Playing</Text>
                         {this.renderNowPlaying()}
                     </View>
                     <View style={styles.Container}>
-                        <Text style={styles.NowPlaying}>Next Song</Text>
+                        <Text style={styles.NowPlaying}>Up Next</Text>
                         {this.renderNextSong()}
                     </View>
                 </View>
-            </Image>
+            </View>
         );
     }
+    /*
+    render() {
+        const vidID = 'z58bg8bHbPU';
+        return(
+            <View style = {styles.Parent}>
+                <WebView source={{uri: 'https://www.youtube.com/embed/' + vidID}}/>
+            </View>
+        );
+    }*/
 }
 
 const styles = StyleSheet.create({
@@ -93,6 +104,7 @@ const styles = StyleSheet.create({
         flex: 1,
         height: null,
         width: null,
+        backgroundColor: '#121315',
     },
     Main : {
         flex: 1,
@@ -101,9 +113,8 @@ const styles = StyleSheet.create({
     },
     Container : {
         width:screen.width,
-        height: 200,
-        backgroundColor: 'rgba(0,0,0,.3)',
-        borderRadius: 30,
+        height: (screen.height-110)/2,
+        //backgroundColor: 'blue',
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 10,
@@ -121,5 +132,17 @@ const styles = StyleSheet.create({
         width: screen.width,
         backgroundColor: 'rgba(250,250,250,.5)',
     },
+    Banner: {
+        height: 50,
+        width: screen.width,
+        backgroundColor: '#1A1A1C',
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    MenuButton: {
+        color: 'white',
+        padding: 10,
+    },
+
 
 });

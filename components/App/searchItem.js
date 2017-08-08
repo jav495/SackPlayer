@@ -27,12 +27,13 @@ export default class SearchItem extends React.Component {
 
     addToVoteScreen(){
         //Code to push art/title/url to server backend to be displayed on VoteScreen
+        console.log(this.state.url);
     }
 
     render(){
         return(
             <View>
-                <TouchableOpacity style = {styles.card} onPress={()=>console.log(this.state.url)}>
+                <TouchableOpacity style = {styles.card} onPress={()=>this.addToVoteScreen()}>
                     <Image style = {styles.albumArt} source={{uri:this.state.art}}>
                     </Image>
                     <View style ={styles.textContainer}>

@@ -60,15 +60,18 @@ export default class VoteScreen extends React.Component {
 
     render(){
         return(
-            <Image source = {require('../Images/background.jpg')} style={styles.Parent}>
+            <View style={styles.Parent}>
                 <View style={styles.status}>
+                </View>
+                <View style={styles.Banner}>
+                    <Text style={styles.MenuButton}>Menu</Text>
                 </View>
                 <View style={styles.container}>
                     <ScrollView>
                         {this.cardRender(this.state.Queue)}
                     </ScrollView>
                 </View>
-            </Image>
+            </View>
         );
     }
 }
@@ -79,16 +82,26 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         width: null,
         height: null,
+        backgroundColor: '#121315',
     },
     status: {
         height: 20,
         backgroundColor: 'rgba(255,255,255,.6)',
     },
+    Banner: {
+        height: 50,
+        width: screen.width,
+        backgroundColor: '#1A1A1C',
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
     container: {
         flex:1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'rgba(0,0,0,0.3)',
     },
-    
+    MenuButton: {
+        color: 'white',
+        padding: 10,
+    },
 });

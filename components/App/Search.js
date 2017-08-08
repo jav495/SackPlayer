@@ -63,14 +63,17 @@ export default class Search extends React.Component {
 
     render(){
         return(
-            <Image source = {require('../Images/background.jpg')} style={styles.Parent}>
+            <View style={styles.Parent}>
                 <View style={styles.status}>
                 </View>
+                <View style={styles.Banner}>
+                    <Text style={styles.MenuButton}>Menu</Text>
+                </View>
                 <View style={styles.searchContainer}>
-                    <Icon name="search" size={35} color={'white'} marginLeft={8}/>
-                    <TextInput style={styles.searchBar}
+                    <Icon name="search" size={35} color={'grey'} marginLeft={8}/>
+                    <TextInput style={styles.searchBarText}
                         placeholder='Search for music'
-                        placeholderTextColor='white'
+                        placeholderTextColor='grey'
                         returnKeyType='search'
                         autoCorrect = {false}
                         onChangeText={(searchTerm) => this.setState({searchTerm})}
@@ -84,7 +87,7 @@ export default class Search extends React.Component {
                         {this.searchRender(this.state.searchArr)}
                     </ScrollView>
                 </View>
-            </Image>
+            </View>
         );
     }
 }
@@ -95,21 +98,23 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         width: null,
         height: null,
+        backgroundColor: '#121315',
     },
     searchContainer: {
         flexDirection:'row',
-        backgroundColor: 'rgba(0,0,0,0.6)',
-        borderRadius: 100,
-        marginLeft: 10,
-        marginRight: 10,
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5,
+        marginLeft: 5,
+        marginRight: 5,
         marginTop: 10,
     },
-    searchBar: {
+    searchBarText: {
         flex: 1,
         height: 40,
         alignItems: 'center',
-        color: 'white',
-        backgroundColor: 'rgba(0,0,0,0.2)',
+        color: 'black',
     },
     status: {
         height: 20,
@@ -119,5 +124,16 @@ const styles = StyleSheet.create({
         flex:1,
         backgroundColor: 'rgba(0,0,0,0.3)',
         alignItems: 'center',
-    }
+    },
+    Banner: {
+        height: 50,
+        width: screen.width,
+        backgroundColor: '#1A1A1C',
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    MenuButton: {
+        color: 'white',
+        padding: 10,
+    },
 });
